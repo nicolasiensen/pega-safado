@@ -38,3 +38,4 @@ gem 'jquery-rails'
 # gem 'debugger'
 
 gem 'nokogiri'
+gem 'newrelic_rpm'
