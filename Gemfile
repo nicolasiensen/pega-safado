@@ -11,13 +11,16 @@ gem 'pg'
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
-  gem 'sass-rails',   '~> 3.2.3'
-  gem 'coffee-rails', '~> 3.2.1'
+  gem 'sass-rails',       '~> 3.2.3'
+  gem 'coffee-rails',     '~> 3.2.1'
+  gem 'uglifier',         '>= 1.0.3'
+  gem 'zurb-foundation',  '~> 4.0.0'
+  gem 'compass-rails'
+end
 
-  # See https://github.com/sstephenson/execjs#readme for more supported runtimes
-  # gem 'therubyracer', :platforms => :ruby
-
-  gem 'uglifier', '>= 1.0.3'
+group :test do
+  gem 'cucumber-rails', :require => false
+  gem 'database_cleaner'
 end
 
 gem 'jquery-rails'
@@ -39,3 +42,7 @@ gem 'jquery-rails'
 
 gem 'nokogiri'
 gem 'newrelic_rpm'
+gem 'machinist', '>= 2.0.0.beta2'
+gem 'faker'
+gem 'inherited_resources'
+gem 'slim'

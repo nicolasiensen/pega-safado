@@ -56,10 +56,10 @@ namespace :import do
           company_cnpj = row.css("td")[0].text
           company_name = row.css("td")[1].text
           invoice = row.css("td")[2].text.delete("\n ")
-          value = row.css("td")[3].text.delete("R$ ", ".").gsub(",", ".").to_f
+          value = row.css("td")[3].text.delete("R$ ").delete(".").gsub(",", ".").to_f
           next if company_cnpj.blank? || invoice.blank?
           company = Company.find_or_create_by_cnpj(cnpj: company_cnpj, name: company_name)
-          Refund.create company: company, invoice: invoice, deputy: deputy, value: value, category: category
+          Refund.create company: company, invoice: invoice, deputy: deputy, value: value, category: category, date: Date.new(year.to_i, month.to_i)
         end
       end
     end

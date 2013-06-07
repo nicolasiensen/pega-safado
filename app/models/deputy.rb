@@ -5,4 +5,13 @@ class Deputy < ActiveRecord::Base
   has_many :companies, :through => :refunds
   validates :name, :party_id, :uid, :state, :nickname, presence: true
   validates :uid, :nickname, :uniqueness => true
+
+  def most_suspicious_company
+    refund = self.refunds.where("date >= ? AND date <= ?", (Date.today - 1.month).beginning_of_month, (Date.today - 1.month).end_of_month).order("value DESC").first
+    if refund
+      refund.company
+    else
+      nil
+    end
+  end
 end

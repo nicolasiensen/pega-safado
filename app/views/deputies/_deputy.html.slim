@@ -1,0 +1,8 @@
+.deputy data-id=deputy.id
+  .row
+    .nickname= deputy.nickname
+    .most_suspicious_company
+      - if deputy.most_suspicious_company.nil?
+        | ?
+      - else
+        = deputy.most_suspicious_company.name
