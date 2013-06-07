@@ -28,6 +28,8 @@ namespace :import do
       next if nickname == "ILÁRIO MARQUES"
       next if nickname == "AKIRA OTSUBO"
       next if nickname == "GOIACIARA CRUZ"
+      next if nickname == "JOÃO CARLOS BACELAR"
+      next if nickname == "LÁZARO BOTELHO"
       next if Deputy.find_all_by_nickname(nickname).any?
       party = Party.find_or_create_by_name(name: deputado.css("partido").text)
       state = deputado.css("uf").text
