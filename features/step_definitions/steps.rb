@@ -15,5 +15,5 @@ Then(/^I should see this deputy$/) do
 end
 
 Then(/^the most suspicious company of this deputy should be "(.*?)"$/) do |arg1|
-  page.should have_css(".deputy[data-id='#{@deputy.id}'] .most_suspicious_company", text: arg1)
+  page.should have_css(".deputy[data-id='#{@deputy.id}'] .suspicious_company .company_name", text: arg1)
 end

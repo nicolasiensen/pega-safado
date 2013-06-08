@@ -1,5 +1,6 @@
 PegaSafado::Application.routes.draw do
   root :to => 'deputies#index'
+  resources :deputies
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

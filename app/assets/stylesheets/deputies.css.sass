@@ -1,5 +1,17 @@
 body.deputies.index
   .deputy
     +grid-column(12)
-    .nickname, .most_suspicious_company
-      +grid-column(6)
+    margin-bottom: 2em
+    .nickname
+      +grid-column(3)
+    .most_suspicious_companies
+      +grid-column(9)
+    .suspicious_company
+      margin-bottom: 1em
+      background: lightgray
+      span
+        display: inline-block
+      span.company_name
+        width: 50%
+      span.company_cnpj, span.total_refunds
+        width: 25%

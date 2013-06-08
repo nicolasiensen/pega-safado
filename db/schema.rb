@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130607130105) do
+ActiveRecord::Schema.define(:version => 20130607221054) do
 
   create_table "categories", :force => true do |t|
     t.string   "name"
@@ -53,4 +53,5 @@ ActiveRecord::Schema.define(:version => 20130607130105) do
     t.date     "date"
   end
 
+  create_view "suspicious_companies", "WITH deputy_stats AS (SELECT d.id AS deputy_id, r.company_id, sum(r.value) AS total_refunds FROM (deputies d JOIN refunds r ON ((d.id = r.deputy_id))) GROUP BY d.id, r.company_id), company_rankings AS (SELECT deputy_stats.deputy_id, deputy_stats.company_id, rank() OVER (PARTITION BY deputy_stats.deputy_id ORDER BY deputy_stats.total_refunds DESC, deputy_stats.company_id) AS rank, deputy_stats.total_refunds FROM deputy_stats) SELECT company_rankings.deputy_id, company_rankings.company_id, company_rankings.rank, company_rankings.total_refunds FROM company_rankings WHERE (company_rankings.rank <= 5)", :force => true
 end
