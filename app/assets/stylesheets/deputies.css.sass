@@ -15,3 +15,16 @@ body.deputies.index
         width: 50%
       span.company_cnpj, span.total_refunds
         width: 25%
+
+@media screen and (max-width: $small-screen)
+  body.deputies.index
+    .deputy
+      .nickname, .most_suspicious_companies
+        +grid-column(12)
+      .suspicious_company
+        span.company_cnpj
+          display: none
+        span.company_name
+          width: 70%
+        span.total_refunds
+          width: 30%
